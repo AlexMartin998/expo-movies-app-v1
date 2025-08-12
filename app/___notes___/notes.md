@@ -139,6 +139,25 @@ import './../global.css';
 
 
 
+## TMDB
+- --- Crear cuenta para q en permfil obtengamos el API KEY
+
+
+
+### AXIOS
+```sh
+pnpm add axios
+```
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,17 +1,21 @@
 import React from 'react';
 import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import MainSlidesShow from '@/presentation/movies/components/MainSlidesShow';
 import MovieHorizontalList from '@/presentation/movies/components/MovieHorizontalList';
 import { useMovies } from '@/presentation/movies/hooks/useMovies';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const HomeScreen = () => {
   ///* hooks ---------------
   const safeArea = useSafeAreaInsets();
 
-  const { nowPlayingQuery, popularQuery, topRatedQuery, upcomingQuery } =
-    useMovies();
+  const {
+    nowPlayingQuery,
+    popularInfiniteQuery,
+    topRatedQuery,
+    upcomingQuery,
+  } = useMovies();
   const { data: nowPlayingMovies, isLoading, isRefetching } = nowPlayingQuery;
 
   if (isLoading || isRefetching) {
@@ -34,8 +38,10 @@ const HomeScreen = () => {
 
         <MovieHorizontalList
           title="Populares"
-          movies={popularQuery.data || []}
+          // movies={popularQuery.data || []}
+          movies={popularInfiniteQuery.data?.pages.flat() || []}
           className="mb-4"
+          onLoadMore={popularInfiniteQuery.fetchNextPage}
         />
 
         <MovieHorizontalList

@@ -2,6 +2,7 @@ import { useLocalSearchParams } from 'expo-router';
 import React from 'react';
 import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
 
+import MovieCast from '@/presentation/movie/components/MovieCast';
 import MovieDescription from '@/presentation/movie/components/MovieDescription';
 import MovieHeader from '@/presentation/movie/components/MovieHeader';
 import { useMovie } from '@/presentation/movies/hooks/useMovie';
@@ -9,7 +10,7 @@ import { useMovie } from '@/presentation/movies/hooks/useMovie';
 const MovieScreen = () => {
   const { id } = useLocalSearchParams();
 
-  const { movieQuery } = useMovie({ movieId: +id });
+  const { movieQuery, castQuery } = useMovie({ movieId: +id });
 
   if (movieQuery.isLoading || movieQuery.isRefetching) {
     return (
@@ -34,6 +35,8 @@ const MovieScreen = () => {
         genres={movieQuery.data?.genres || []}
         budget={movieQuery.data?.budget || 0}
       />
+
+      <MovieCast cast={castQuery.data || []} />
     </ScrollView>
   );
 };

@@ -177,7 +177,12 @@ pnpm add @tanstack/react-query
 
 #### Infinite Scroll & Navigation
 - --- Fin de un scroll en el FlatList para el infinite scroll
-  - -- s
+  - -- Con tanStackQuery facil
+
+
+
+- --- Gradient:
+  - -- run `pnpm add expo-linear-gradient`
 
 
 

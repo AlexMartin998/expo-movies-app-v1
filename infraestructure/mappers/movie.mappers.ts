@@ -35,6 +35,8 @@ export class MovieMapper {
         company => company.name
       ),
       spokenLanguages: movieDB.spoken_languages.map(language => language.name),
+
+      originalTitle: movieDB.original_title,
     };
   }
 }

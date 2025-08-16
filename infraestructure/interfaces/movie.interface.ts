@@ -15,4 +15,5 @@ export interface CompleteMovie extends Movie {
   genres: string[];
   productionCompanies: string[];
   spokenLanguages: string[];
+  originalTitle: string;
 }

@@ -2,6 +2,7 @@ import { useLocalSearchParams } from 'expo-router';
 import React from 'react';
 import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
 
+import MovieHeader from '@/presentation/movie/components/MovieHeader';
 import { useMovie } from '@/presentation/movies/hooks/useMovie';
 
 const MovieScreen = () => {
@@ -20,8 +21,11 @@ const MovieScreen = () => {
 
   return (
     <ScrollView>
-      <Text>MovieScreen {id}</Text>
-      <Text>{movieQuery.data?.title}</Text>
+      <MovieHeader
+        poster={movieQuery.data?.poster || ''}
+        originalTitle={movieQuery.data?.originalTitle || ''}
+        title={movieQuery.data?.title || ''}
+      />
     </ScrollView>
   );
 };
